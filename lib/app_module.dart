@@ -4,12 +4,11 @@ import 'package:clean_architecture/modules/search/external/datasources/github_da
 import 'package:clean_architecture/modules/search/infra/repositories/search_repository_impl.dart';
 import 'package:clean_architecture/modules/search/presenter/search/search_page.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class AppModule extends MainModule {
   @override
-  // TODO: implement binds
   List<Bind> get binds => [
         Bind((i) => Dio()),
         Bind((i) => GithubDataSource(i())),
@@ -18,14 +17,10 @@ class AppModule extends MainModule {
       ];
 
   @override
-  // TODO: implement routers
   List<ModularRouter> get routers => [
         ModularRouter('/', child: (_, __) => SearchPage()),
       ];
 
   @override
-  // TODO: implement bootstrap
   Widget get bootstrap => AppWidget();
 }
-
-class Router {}
