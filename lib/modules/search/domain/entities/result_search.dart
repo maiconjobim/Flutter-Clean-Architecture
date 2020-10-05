@@ -1,7 +1,8 @@
 class ResultSearch {
-  final String img;
-  final String title;
-  final String content;
+  final String image;
+  final String name;
+  final String nickname;
+  final String url;
 
-  ResultSearch({this.img, this.title, this.content});
+  const ResultSearch({this.image, this.name, this.nickname, this.url});
 }
