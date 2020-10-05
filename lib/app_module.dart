@@ -7,6 +7,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'modules/search/presenter/search/search_store.dart';
+import 'modules/search/presenter/search/user_page.dart';
+
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
@@ -14,11 +17,13 @@ class AppModule extends MainModule {
         Bind((i) => GithubDataSource(i())),
         Bind((i) => SearchRepositoryImpl(i())),
         Bind((i) => SearchByTextImpl(i())),
+        Bind((i) => SearchStore(i())),
       ];
 
   @override
   List<ModularRouter> get routers => [
-        ModularRouter('/', child: (_, __) => SearchPage()),
+        ModularRouter(Modular.initialRoute, child: (_, __) => SearchPage()),
+        ModularRouter('/user', child: (_, __) => UserPage()),
       ];
 
   @override

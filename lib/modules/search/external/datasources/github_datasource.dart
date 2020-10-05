@@ -21,7 +21,11 @@ class GithubDataSource implements SearchDatasource {
 
     if (response.statusCode == 200) {
       final listResultSearchModel = (response.data['items'] as List)
-          .map((e) => ResultSearchModel.fromMap(e))
+          .map((e) => ResultSearchModel(
+                nickname: e['login'],
+                image: e['avatar_url'],
+                url: e['url'],
+              ))
           .toList();
       return listResultSearchModel;
     } else {

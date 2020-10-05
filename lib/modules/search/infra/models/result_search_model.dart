@@ -3,31 +3,34 @@ import 'dart:convert';
 import 'package:clean_architecture/modules/search/domain/entities/result_search.dart';
 
 class ResultSearchModel extends ResultSearch {
-  final String img;
-  final String title;
-  final String content;
-  ResultSearchModel(this.img, this.title, this.content);
+  final String image;
+  final String name;
+  final String nickname;
+  final String url;
+
+  const ResultSearchModel({this.image, this.name, this.nickname, this.url});
 
   Map<String, dynamic> toMap() {
     return {
-      'img': img,
-      'title': title,
-      'content': content,
+      'image': image,
+      'name': name,
+      'nickname': nickname,
+      'url': url,
     };
   }
 
-  factory ResultSearchModel.fromMap(Map<String, dynamic> map) {
+  static ResultSearchModel fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 
     return ResultSearchModel(
-      map['img'],
-      map['title'],
-      map['content'],
+      image: map['avatar_url'],
+      name: map['login'],
+      url: map['url'],
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory ResultSearchModel.fromJson(String source) =>
-      ResultSearchModel.fromMap(json.decode(source));
+  static ResultSearchModel fromJson(String source) =>
+      fromMap(json.decode(source));
 }
